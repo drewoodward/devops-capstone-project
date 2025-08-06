@@ -30,3 +30,10 @@ httpie==3.2.1
 
 #CORS
 Flask-Cors
+
+Flask
+Flask-SQLAlchemy
+Flask-Talisman
+psycopg2-binary
+gunicorn
+# …any other libs…
