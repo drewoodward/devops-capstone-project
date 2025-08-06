@@ -4,10 +4,20 @@ Account Service
 This microservice handles the lifecycle of Accounts
 """
 # pylint: disable=unused-import
-from flask import jsonify, request, make_response, abort, url_for   # noqa; F401
+from flask import Flask, jsonify, request, make_response, abort, url_for   # noqa; F401
 from service.models import Account
 from service.common import status  # HTTP Status Codes
-from . import app  # Import Flask application
+#from . import app  # Import Flask application
+from flask_talisman import Talisman
+from flask_sqlalchemy import SQLAlchemy
+import os
+print("Using DATABASE_URL:", os.getenv("DATABASE_URL"))
+app = Flask(__name__)
+Talisman(app)
+# tell SQLAlchemy exactly which database to connect to
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+db = SQLAlchemy(app)
+
 
 
 ############################################################
