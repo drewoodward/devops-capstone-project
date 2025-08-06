@@ -22,14 +22,13 @@ def health():
 ######################################################################
 # GET INDEX
 ######################################################################
-@app.route("/accounts")
-def index():
+@app.route("/")
+def root_index():
     """Root URL response"""
     return (
         jsonify(
             name="Account REST API Service",
             version="1.0",
-            # paths=url_for("list_accounts", _external=True),
         ),
         status.HTTP_200_OK,
     )
