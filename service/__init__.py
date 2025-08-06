@@ -11,6 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_talisman import Talisman
 from service import config
 from service.common import log_handlers
+from flask_cors import CORS
 
 # Debug: print the database URL
 print("DATABASE_URL =", os.getenv("DATABASE_URL"))
@@ -27,7 +28,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Enable security headers
 Talisman(app)
-
+CORS(app)
 # Initialize logging
 log_handlers.init_logging(app, "gunicorn.error")
 
